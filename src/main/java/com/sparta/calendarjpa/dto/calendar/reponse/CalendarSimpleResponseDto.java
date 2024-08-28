@@ -1,7 +1,6 @@
-package com.sparta.calendarjpa.dto;
+package com.sparta.calendarjpa.dto.calendar.reponse;
 
 import lombok.Getter;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Getter
 public class CalendarSimpleResponseDto {

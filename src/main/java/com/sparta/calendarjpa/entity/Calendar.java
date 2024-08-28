@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,8 +19,9 @@ public class Calendar {
     private String name;
     private String title;
     private String todo;
-//    private LocalDateTime createdAt;
-//    private LocalDateTime modifiedAt;
+
+    @OneToMany(mappedBy = "calendar")
+    private List<Comment> comments = new ArrayList<>();
 
     public Calendar(String name, String title, String todo) {
         this.name = name;

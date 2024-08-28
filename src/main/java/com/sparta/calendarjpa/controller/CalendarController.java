@@ -1,6 +1,11 @@
 package com.sparta.calendarjpa.controller;
 
-import com.sparta.calendarjpa.dto.*;
+import com.sparta.calendarjpa.dto.calendar.reponse.CalendarDetailResponseDto;
+import com.sparta.calendarjpa.dto.calendar.reponse.CalendarSaveResponseDto;
+import com.sparta.calendarjpa.dto.calendar.reponse.CalendarSimpleResponseDto;
+import com.sparta.calendarjpa.dto.calendar.reponse.CalendarUpdateResponseDto;
+import com.sparta.calendarjpa.dto.calendar.request.CalendarSaveRequestDto;
+import com.sparta.calendarjpa.dto.calendar.request.CalendarUpdateRequestDto;
 import com.sparta.calendarjpa.service.CalendarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

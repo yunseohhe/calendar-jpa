@@ -1,4 +1,4 @@
-package com.sparta.calendarjpa.dto;
+package com.sparta.calendarjpa.dto.calendar.reponse;
 
 import lombok.Getter;
 
