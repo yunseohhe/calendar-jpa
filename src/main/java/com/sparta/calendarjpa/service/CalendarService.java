@@ -74,6 +74,14 @@ public class CalendarService {
         return new CalendarUpdateResponseDto(calendar.getId(), calendar.getName(), calendar.getTitle(), calendar.getTodo());
     }
 
+    @Transactional
+    public void deleteCalendar(Long calendarId) {
+        if (!calendarRepository.existsById(calendarId)) {
+            throw new NullPointerException("해당하는 Id가 없습니다.");
+        }
+
+        calendarRepository.deleteById(calendarId);
+    }
 
 
 }

@@ -20,7 +20,7 @@ public class Calendar extends Timestamped {
     private String title;
     private String todo;
 
-    @OneToMany(mappedBy = "calendar")
+    @OneToMany(mappedBy = "calendar", cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
 
     public Calendar(String name, String title, String todo) {

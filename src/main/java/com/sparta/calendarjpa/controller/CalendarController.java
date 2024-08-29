@@ -43,4 +43,9 @@ public class CalendarController {
     public CalendarUpdateResponseDto updateCalendar(@PathVariable("calendarId") Long calendarId, @RequestBody CalendarUpdateRequestDto requestDto) {
         return calendarService.updateCalendar(calendarId, requestDto);
     }
+
+    @DeleteMapping("/calendars/{calendarId}")
+    public void deleteCalendar(@PathVariable Long calendarId) {
+        calendarService.deleteCalendar(calendarId);
+    }
 }
