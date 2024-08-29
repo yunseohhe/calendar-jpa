@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Getter
 @NoArgsConstructor
@@ -14,16 +12,21 @@ public class Comment extends Timestamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
     private String contents;
+    private String username;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "calendar_id")
     private Calendar calendar;
 
-    public Comment(String name, String contents) {
-        this.name = name;
+    public Comment(String contents, String username, Calendar calendar) {
+        this.contents = contents;
+        this.username = username;
+        this.calendar = calendar;
+    }
+
+    public void update(String contents) {
         this.contents = contents;
     }
 }
