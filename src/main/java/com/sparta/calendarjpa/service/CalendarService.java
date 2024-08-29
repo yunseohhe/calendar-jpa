@@ -2,7 +2,6 @@ package com.sparta.calendarjpa.service;
 
 import com.sparta.calendarjpa.dto.calendar.reponse.CalendarDetailResponseDto;
 import com.sparta.calendarjpa.dto.calendar.reponse.CalendarSaveResponseDto;
-import com.sparta.calendarjpa.dto.calendar.reponse.CalendarSimpleResponseDto;
 import com.sparta.calendarjpa.dto.calendar.reponse.CalendarUpdateResponseDto;
 import com.sparta.calendarjpa.dto.calendar.request.CalendarSaveRequestDto;
 import com.sparta.calendarjpa.dto.calendar.request.CalendarUpdateRequestDto;
@@ -11,9 +10,6 @@ import com.sparta.calendarjpa.repository.CalendarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -27,20 +23,7 @@ public class CalendarService {
     public CalendarSaveResponseDto saveCalendar(CalendarSaveRequestDto requestDto) {
         Calendar newCalendar = new Calendar(requestDto.getName(), requestDto.getTitle(), requestDto.getTodo());
         Calendar saveCalendar = calendarRepository.save(newCalendar);
-        return new CalendarSaveResponseDto(saveCalendar.getName(), saveCalendar.getTitle(), saveCalendar.getTodo());
-    }
-
-    public List<CalendarSimpleResponseDto> getCalendars() {
-        List<Calendar> calendarList = calendarRepository.findAll();
-
-        List<CalendarSimpleResponseDto> dtoList = new ArrayList<>();
-        for (Calendar calendar : calendarList) {
-            CalendarSimpleResponseDto dto = new CalendarSimpleResponseDto(
-                    calendar.getTitle(),
-                    calendar.getTodo());
-            dtoList.add(dto);
-        }
-        return dtoList;
+        return new CalendarSaveResponseDto(saveCalendar.getId(), saveCalendar.getName(), saveCalendar.getTitle(), saveCalendar.getTodo());
     }
 
     public CalendarDetailResponseDto getCalendar(Long calendarId) {

@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Calendar {
+public class Calendar extends Timestamped {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
