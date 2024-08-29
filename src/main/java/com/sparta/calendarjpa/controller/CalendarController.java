@@ -7,6 +7,7 @@ import com.sparta.calendarjpa.dto.calendar.request.CalendarSaveRequestDto;
 import com.sparta.calendarjpa.dto.calendar.request.CalendarUpdateRequestDto;
 import com.sparta.calendarjpa.service.CalendarService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,15 @@ public class CalendarController {
     @PostMapping("/calendars")
     public ResponseEntity<CalendarSaveResponseDto> saveCalendar(@RequestBody CalendarSaveRequestDto requestDto) {
         return ResponseEntity.ok(calendarService.saveCalendar(requestDto));
+    }
+
+    // 일정 페이징 조회
+    @GetMapping("/calendars")
+    public Page<CalendarDetailResponseDto> getCalendars(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        return calendarService.getCalendars(page, size);
     }
 
     // 일정 단건 조회
