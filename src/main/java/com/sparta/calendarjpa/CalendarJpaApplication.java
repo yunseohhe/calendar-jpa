@@ -14,3 +14,6 @@ public class CalendarJpaApplication {
     }
 
 }
+
+
+// 6단계 구현까지 - 해설영상 ( 1:41:07 까지임)
