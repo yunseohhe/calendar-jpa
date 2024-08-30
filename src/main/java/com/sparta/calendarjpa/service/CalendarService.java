@@ -2,6 +2,7 @@ package com.sparta.calendarjpa.service;
 
 import com.sparta.calendarjpa.dto.calendar.reponse.CalendarDetailResponseDto;
 import com.sparta.calendarjpa.dto.calendar.reponse.CalendarSaveResponseDto;
+import com.sparta.calendarjpa.dto.calendar.reponse.CalendarSimpleResponseDto;
 import com.sparta.calendarjpa.dto.calendar.reponse.CalendarUpdateResponseDto;
 import com.sparta.calendarjpa.dto.calendar.request.CalendarSaveRequestDto;
 import com.sparta.calendarjpa.dto.calendar.request.CalendarUpdateRequestDto;
@@ -39,22 +40,19 @@ public class CalendarService {
                 new UserDto(user.getId(), user.getUsername(), user.getEmail()));
     }
 
-    public Page<CalendarDetailResponseDto> getCalendars(int page, int size) {
+    public Page<CalendarSimpleResponseDto> getCalendars(int page, int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
 
         Page<Calendar> calendars = calendarRepository.findAllByOrderByModifiedAtDesc(pageable);
 
-        return calendars.map(calendar -> {
-                    User user = calendar.getUser();
-                    return new CalendarDetailResponseDto(
-                            calendar.getId(),
-                            new UserDto(user.getId(), user.getUsername(), user.getEmail()),
-                            calendar.getTitle(),
-                            calendar.getTodo(),
-                            calendar.getComments().size(),
-                            calendar.getCreatedAt(),
-                            calendar.getModifiedAt());
-                }
+        return calendars.map(calendar -> new CalendarSimpleResponseDto(
+                        calendar.getId(),
+                        calendar.getTitle(),
+                        calendar.getTodo(),
+                        calendar.getComments().size(),
+                        calendar.getCreatedAt(),
+                        calendar.getModifiedAt()
+                )
         );
     }
 

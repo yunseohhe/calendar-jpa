@@ -2,6 +2,7 @@ package com.sparta.calendarjpa.controller;
 
 import com.sparta.calendarjpa.dto.calendar.reponse.CalendarDetailResponseDto;
 import com.sparta.calendarjpa.dto.calendar.reponse.CalendarSaveResponseDto;
+import com.sparta.calendarjpa.dto.calendar.reponse.CalendarSimpleResponseDto;
 import com.sparta.calendarjpa.dto.calendar.reponse.CalendarUpdateResponseDto;
 import com.sparta.calendarjpa.dto.calendar.request.CalendarSaveRequestDto;
 import com.sparta.calendarjpa.dto.calendar.request.CalendarUpdateRequestDto;
@@ -25,7 +26,7 @@ public class CalendarController {
 
     // 일정 페이징 조회
     @GetMapping("/calendars")
-    public ResponseEntity<Page<CalendarDetailResponseDto>> getCalendars(
+    public ResponseEntity<Page<CalendarSimpleResponseDto>> getCalendars(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
