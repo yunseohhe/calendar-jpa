@@ -16,15 +16,19 @@ public class Calendar extends Timestamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
     private String title;
     private String todo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @OneToMany(mappedBy = "calendar", cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
 
-    public Calendar(String name, String title, String todo) {
-        this.name = name;
+
+    public Calendar(User user, String title, String todo) {
+        this.user = user;
         this.title = title;
         this.todo = todo;
     }

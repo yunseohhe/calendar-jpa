@@ -1,5 +1,6 @@
 package com.sparta.calendarjpa.dto.calendar.reponse;
 
+import com.sparta.calendarjpa.dto.user.UserDto;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -8,16 +9,16 @@ import java.time.LocalDateTime;
 public class CalendarDetailResponseDto {
 
     private final Long id;
-    private final String name;
+    private final UserDto user;
     private final String title;
     private final String todo;
     private final int commentCount;
     private final LocalDateTime createdAt;
     private final LocalDateTime modifiedAt;
 
-    public CalendarDetailResponseDto(Long id, String name, String title, String todo, int commentCount, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public CalendarDetailResponseDto(Long id, UserDto user, String title, String todo, int commentCount, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.id = id;
-        this.name = name;
+        this.user = user;
         this.title = title;
         this.todo = todo;
         this.commentCount = commentCount;

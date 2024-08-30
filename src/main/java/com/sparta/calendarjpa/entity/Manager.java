@@ -4,32 +4,24 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Getter
+@Entity
 @NoArgsConstructor
-public class Comment extends Timestamped {
+public class Manager {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String contents;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false) // 일정 만든 사람 id
     private User user;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "calendar_id", nullable = false)
     private Calendar calendar;
 
-    public Comment(String contents, User user, Calendar calendar) {
-        this.contents = contents;
+    public Manager(User user, Calendar calendar) {
         this.user = user;
         this.calendar = calendar;
-    }
-
-    public void update(String contents) {
-        this.contents = contents;
     }
 }

@@ -25,11 +25,11 @@ public class CalendarController {
 
     // 일정 페이징 조회
     @GetMapping("/calendars")
-    public Page<CalendarDetailResponseDto> getCalendars(
+    public ResponseEntity<Page<CalendarDetailResponseDto>> getCalendars(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
-        return calendarService.getCalendars(page, size);
+        return ResponseEntity.ok(calendarService.getCalendars(page, size));
     }
 
     // 일정 단건 조회
@@ -40,8 +40,8 @@ public class CalendarController {
 
     // 일정 수정
     @PutMapping("/calendars/{calendarId}")
-    public CalendarUpdateResponseDto updateCalendar(@PathVariable("calendarId") Long calendarId, @RequestBody CalendarUpdateRequestDto requestDto) {
-        return calendarService.updateCalendar(calendarId, requestDto);
+    public ResponseEntity<CalendarUpdateResponseDto> updateCalendar(@PathVariable("calendarId") Long calendarId, @RequestBody CalendarUpdateRequestDto requestDto) {
+        return ResponseEntity.ok(calendarService.updateCalendar(calendarId, requestDto));
     }
 
     @DeleteMapping("/calendars/{calendarId}")
