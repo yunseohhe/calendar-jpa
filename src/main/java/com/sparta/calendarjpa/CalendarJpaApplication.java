@@ -17,3 +17,4 @@ public class CalendarJpaApplication {
 
 
 // 6단계 구현까지 - 해설영상 ( 1:41:07 까지임)
+// 7단계는 "1:45:39" 부터임
